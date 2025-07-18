@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from todo import models
 from todo.models import TodoItem
+from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 
 def signup(request):
     if request.method == 'POST':
@@ -15,4 +16,23 @@ def signup(request):
     return render(request, 'signup.html')
 
 def login(request):
+    if request.method == 'POST':
+        emailid = request.POST.get('emailid')
+        pwd = request.POST.get('pwd')
+        print(emailid, pwd)
+        user = authenticate(username=emailid, password=pwd)
+        if user is not None:
+            auth_login(request, user)
+            return redirect('/todo')
+        else:
+            return render(request, 'login.html', {'error': 'Invalid credentials'})
+        
     return render(request, 'login.html')
+
+def todo(request):
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        print(title)
+        obj = models.TodoItem(title)
+        obj.save()
+    return render(request, 'todo.html')
