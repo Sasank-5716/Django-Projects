@@ -61,15 +61,15 @@
         {% csrf_token %}
       <div class="form-group">
         <label>Username</label>
-        <input type="text" required placeholder="Choose a username">
+        <input type="text" required placeholder="Choose a username" name="fnm">
       </div>
       <div class="form-group">
         <label>Email</label>
-        <input type="email" required placeholder="Enter your email">
+        <input type="email" required placeholder="Enter your email" name="emailid">
       </div>
       <div class="form-group">
         <label>Password</label>
-        <input type="password" required placeholder="Create a password">
+        <input type="password" required placeholder="Create a password" name="pwd">
       </div>
       <button class="btn" type="submit">Sign Up</button>
     </form>
