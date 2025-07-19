@@ -17,28 +17,14 @@ def signup(request):
 
 def login(request):
     if request.method == 'POST':
-        emailid = request.POST.get('emailid')
-        pwd = request.POST.get('pwd')
-        print(emailid, pwd)
-        try:
-            user_obj = User.objects.get(email=emailid)
-            username = user_obj.username
-        except User.DoesNotExist:
-            username = None
-        user = authenticate(username=username, password=pwd)
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
         if user is not None:
             auth_login(request, user)
-            return redirect('todo')
+            return redirect('/todo')
         else:
             return render(request, 'login.html', {'error': 'Invalid credentials'})
-        # Remove the email-based lookup, use username directly
-            username = request.POST.get('fnm')
-            user = authenticate(username=username, password=pwd)
-            if user is not None:
-                auth_login(request, user)
-                return redirect('todo')
-            else:
-                return render(request, 'login.html', {'error': 'Invalid credentials'})        
     return render(request, 'login.html')
 
 def todo(request):
