@@ -1,5 +1,6 @@
 import mysql.connector
 
+
 database = mysql.connector.connect(
     host="localhost",
     user="root",
@@ -11,6 +12,7 @@ database = mysql.connector.connect(
 cursorObject = database.cursor()
 
 #create database
-cursorObject.execute("CREATE DATABASE sasank")
+cursorObject.execute("CREATE DATABASE IF NOT EXISTS sasank")
+
 
 print("Database created successfully")
