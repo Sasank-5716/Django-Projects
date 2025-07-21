@@ -9,7 +9,17 @@
     {% include 'navbar.html' %}
     <div class="container">
       <br />
-      {% block content %} {% endblock %}
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+      {% block content %}
+      {% endblock %}
+      {% block content %}
+       {% endblock %}
     </div>
   </body>
 </html>
