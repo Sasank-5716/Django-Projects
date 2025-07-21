@@ -27,4 +27,15 @@ def logout_user(request):
     messages.success(request, 'You have been logged out')
     return redirect('home')
 
+def register_user(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        print(username, password)
+        new_user = User.objects.create_user(username=username, password=password)
+        new_user.save()
+        messages.success(request, 'Registration successful (not implemented)')
+        return redirect('login')
+    return render(request, 'register.html', {})
+
 

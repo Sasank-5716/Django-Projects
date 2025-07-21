@@ -1,59 +1,58 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Dark Navbar</title>
     <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-        .navbar {
-            background-color: #222;
-            color: #fff;
-            padding: 0.5rem 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .navbar .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-        .navbar ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
-        .navbar ul li {
-            margin-left: 2rem;
-        }
-        .navbar ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 1rem;
-            transition: color 0.2s;
-        }
-        .navbar ul li a:hover {
-            color: #1abc9c;
-        }
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+      .navbar {
+        background-color: #222;
+        color: #fff;
+        padding: 0.5rem 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .navbar .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        letter-spacing: 1px;
+      }
+      .navbar ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+      }
+      .navbar ul li {
+        margin-left: 2rem;
+      }
+      .navbar ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 1rem;
+        transition: color 0.2s;
+      }
+      .navbar ul li a:hover {
+        color: #1abc9c;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <nav class="navbar">
-        <div class="logo">MyApp</div>
-        <ul>
-            <li><a href="#">Home</a></li>
-
-            {% if user.is_authenticated %}
-            <li><a href="{% url 'login'%}">Logout</a></li>
-            {% else %}
-            <li><a href="{% url 'login' %}">Login</a></li>
-            {% endif %}
-        </ul>
+      <div class="logo">MyApp</div>
+      <ul>
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+        {% else %}
+        <li><a href="{% url 'register' %}">Register</a></li>
+        <li><a href="{% url 'login' %}">Login</a></li>
+        {% endif %}
+      </ul>
     </nav>
-</body>
+  </body>
 </html>
