@@ -7,6 +7,4 @@ class SignUpForm(UserCreationForm):
     first_name = forms.CharField(label='',max_length=30, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First Name'}))
     last_name = forms.CharField(label='',max_length=30, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'last Name'}))
 
-	class Meta:
-		model = User
-		fields = ('username', 'email', 'first_name', 'last_name', 'password1', 'password2')
+    
