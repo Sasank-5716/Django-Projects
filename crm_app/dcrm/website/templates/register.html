@@ -7,7 +7,36 @@
     {% csrf_token %}
     {{ form.as_p }}
     <br/>
+    <label for="id_username">Username:</label>
+    <input type="text" name="username" id="id_username" required><br/>
 
+    <label for="id_email">Email:</label>
+    <input type="email" name="email" id="id_email" required><br/>
+
+    <label for="id_first_name">First Name:</label>
+    <input type="text" name="first_name" id="id_first_name" required><br/>
+
+    <label for="id_last_name">Last Name:</label>
+    <input type="text" name="last_name" id="id_last_name" required><br/>
+
+    <label for="id_phone">Phone Number:</label>
+    <input type="tel" name="phone" id="id_phone" required><br/>
+
+    <label for="id_password1">Password:</label>
+    <input type="password" name="password1" id="id_password1" required><br/>
+
+    <label for="id_password2">Confirm Password:</label>
+    <input type="password" name="password2" id="id_password2" required><br/>
+    <script>
+      document.querySelector('form').addEventListener('submit', function(e) {
+        const pw1 = document.getElementById('id_password1').value;
+        const pw2 = document.getElementById('id_password2').value;
+        if (pw1 !== pw2) {
+          alert('Passwords do not match!');
+          e.preventDefault();
+        }
+      });
+    </script>
     <button>Register</button>
   </form>
 </div>
